@@ -1,0 +1,28 @@
+{
+  "name": "blog_nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon inspect  index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Duongg-jp/Blog_nodejs.git"
+  },
+  "keywords": [
+    "blog",
+    "nodejs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Duongg-jp/Blog_nodejs/issues"
+  },
+  "homepage": "https://github.com/Duongg-jp/Blog_nodejs#readme",
+  "description": "",
+  "dependencies": {
+    "blog_nodejs": "file:",
+    "express": "^4.19.2"
+  }
+}
