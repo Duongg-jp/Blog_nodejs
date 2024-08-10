@@ -10,3 +10,5 @@ logs/
 
 # IDE settings
 .vscode/
+
+src/public/css/
