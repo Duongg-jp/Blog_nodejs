@@ -1,4 +1,4 @@
-const Course = require('../models/Course');
+const Course = require('../Models/Course');
 
 class SiteController {
   async index(req, res) {

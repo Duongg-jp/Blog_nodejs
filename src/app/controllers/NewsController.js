@@ -1,3 +1,13 @@
-const { SiteController } = require("./SiteController");
+class NewsController {
+    // [GET] /news
+    index(req, res) {
+        res.render('news');
+    }
 
-module.exports = new SiteController();
+    // [get] /news/:slug
+    show(req, res) {
+        res.send('news detail');
+    }
+}
+
+module.exports = new NewsController();
