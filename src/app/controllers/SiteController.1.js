@@ -12,5 +12,4 @@ class SiteController {
     res.send("Search functionality not yet implemented");
   }
 }
-
 module.exports = new SiteController();

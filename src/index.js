@@ -5,6 +5,11 @@ const morgan = require('morgan');
 const app = express();
 const port = 3000;
 
+const db = require('./config/db/index');
+
+// connect to db
+db.connect();
+
 const route = require('./routes');
 
 app.use(express.static(path.join(__dirname, 'public')));
