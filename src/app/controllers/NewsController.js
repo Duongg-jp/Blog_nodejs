@@ -1,13 +1,3 @@
-class NewsController {
-    // [GET] /news
-    index(req, res) {
-        res.render('news');
-    }
+const { SiteController } = require("./SiteController");
 
-    // [get] /news/:slug
-    show(req, res) {
-        res.send('news detail');
-    }
-}
-
-module.exports = new NewsController();
+module.exports = new SiteController();

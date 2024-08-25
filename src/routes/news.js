@@ -3,7 +3,8 @@ const router = express.Router();
 
 const newsController = require('../app/controllers/NewsController');
 
-router.use('/slug', newsController.show);
-router.use('/', newsController.index);
+// Đảm bảo rằng các phương thức của controller được định nghĩa chính xác
+router.get('/slug', newsController.show);
+router.get('/', newsController.index);
 
 module.exports = router;
