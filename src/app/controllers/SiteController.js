@@ -3,7 +3,10 @@ const Course = require("../models/Course");
 class SiteController {
   index(req, res, next) {
     Course.find({})
-      .then(courses => res.render('home',{courses}))
+      .then(courses => {
+        const plainCourses = courses.map(course => course.toObject());
+        res.render('home', { courses: plainCourses });
+      })
       .catch(err => res.status(400).json({ error: "errrr" }));
   }
 

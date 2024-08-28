@@ -2,25 +2,29 @@ const { engine } = require('express-handlebars');
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
+const Handlebars = require('handlebars');
 const app = express();
 const port = 3000;
 
 const db = require('./config/db/index');
 
-// connect to db
+// Connect to DB
 db.connect();
 
 const route = require('./routes');
 
-app.use(express.static(path.join(__dirname, 'public')));
-
 // Middleware
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// HTTP logger
 app.use(morgan('combined'));
 
+// Register Handlebars helper
+Handlebars.registerHelper('getProp', function (obj, prop) {
+  return obj[prop];
+});
+
+// Handlebars setup
 app.engine(
     'hbs',
     engine({
