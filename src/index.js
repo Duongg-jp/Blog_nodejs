@@ -21,15 +21,19 @@ app.use(express.json());
 // HTTP logger
 app.use(morgan('combined'));
 
-// Handlebars setup
 app.engine(
     'hbs',
     engine({
         extname: '.hbs',
         layoutsDir: path.join(__dirname, 'resources', 'views', 'layouts'),
         defaultLayout: 'main',
+        runtimeOptions: {
+            allowProtoPropertiesByDefault: true,
+            allowProtoMethodsByDefault: true,
+        },
     }),
 );
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
