@@ -2,9 +2,9 @@ const { engine } = require('express-handlebars');
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
-const Handlebars = require('handlebars');
 const app = express();
 const port = 3000;
+
 
 const db = require('./config/db/index');
 
@@ -19,24 +19,28 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('combined'));
 
-// Register Handlebars helper
-Handlebars.registerHelper('getProp', function (obj, prop) {
-  return obj[prop];
-});
-
-// Handlebars setup
+// Handlebars setup with helpers
+// Đăng ký helper
 app.engine(
     'hbs',
     engine({
-        extname: '.hbs',
-        layoutsDir: path.join(__dirname, 'resources', 'views', 'layouts'),
-        defaultLayout: 'main',
-        runtimeOptions: {
-            allowProtoPropertiesByDefault: true,
-            allowProtoMethodsByDefault: true,
+      extname: '.hbs',
+      layoutsDir: path.join(__dirname, 'resources', 'views', 'layouts'),
+      defaultLayout: 'main',
+      runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+      },
+      helpers: {
+        getProp: function (obj, prop) {
+          return obj[prop];
         },
+        json: function (context) {
+          return JSON.stringify(context, null, 2); // Định dạng JSON để dễ đọc
+        }
+      },
     }),
-);
+  );
 
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
@@ -45,5 +49,5 @@ app.set('views', path.join(__dirname, 'resources', 'views'));
 route(app);
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+  console.log(`Example app listening on port ${port}`);
 });

@@ -4,9 +4,13 @@
         {{#each courses}}
         <div class="col-sm-6 col-lg-4">
             <div class="card">
-                <img src="{{getProp this 'image'}}" class="card-img-top" alt="...">
+                <a href="/courses/{{this.slug}}">
+                    <img src="{{getProp this 'image'}}" class="card-img-top" alt="...">
+                </a>
                 <div class="card-body">
+                <a href="/courses/{{this.slug}}">
                     <h5 class="card-title">{{getProp this 'name'}}</h5>
+                </a>
                     <p class="card-text">{{getProp this 'description'}}</p>
                     <a href="#" class="btn btn-primary">54</a>
                 </div>
