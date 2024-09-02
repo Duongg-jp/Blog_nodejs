@@ -33,9 +33,9 @@ app.engine(
       },
       helpers: {
         getProp: function (obj, prop) {
-          return obj ? obj[prop] : undefined; // Đảm bảo obj không phải là null
-        }
-      }
+          return obj ? obj[prop] : '';
+        },
+      },
     }),
   );
 
