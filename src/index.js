@@ -33,12 +33,9 @@ app.engine(
       },
       helpers: {
         getProp: function (obj, prop) {
-          return obj[prop];
-        },
-        json: function (context) {
-          return JSON.stringify(context, null, 2); // Định dạng JSON để dễ đọc
+          return obj ? obj[prop] : undefined; // Đảm bảo obj không phải là null
         }
-      },
+      }
     }),
   );
 

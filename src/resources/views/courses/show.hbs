@@ -8,7 +8,7 @@
       <iframe
         width="560"
         height="315"
-        src="https://www.youtube.com/embed/{{getProp course "videoID"}}?si=_jAs4Oi7_kthbNMe"
+        src="https://www.youtube.com/embed/{{getProp course 'videoID'}}"
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -16,8 +16,6 @@
         allowfullscreen
       ></iframe>
       <h4>{{getProp course "description"}}</h4>
-      <p>Video ID: {{getProp course "videoID"}}</p>
-      <pre>{{json course}}</pre>
     </div>
   </div>
 </div>

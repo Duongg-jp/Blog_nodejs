@@ -5,7 +5,6 @@ class CourseController {
   show(req, res, next) {
     Course.findOne({ slug: req.params.slug })
       .then((course) => {
-        console.log("............course" + course);
         res.render("courses/show", { course });
       })
       .catch(next);
