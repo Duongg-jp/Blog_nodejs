@@ -11,12 +11,11 @@ const CourseSchema = new Schema(
     image: { type: String },
     videoID:{type: String,},
     description: { type: String },
-    slug: { type: String, slug: 'name' }
+    slug: { type: String, slug: 'name', unique: true }
   },
   {
     timestamps: true,
   }
 );
 
-// Tạo model từ schema
 module.exports = mongoose.model("Course", CourseSchema);

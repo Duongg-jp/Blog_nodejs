@@ -1,17 +1,30 @@
-<div>
-    <form method="post" action="/courses/store">
-        <div class="mb-3">
-            <label for="name" class="form-label">tên video</label>
-            <input type="text" name="name" class="form-control" >
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white text-center">
+                    <h4>Thêm Video</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="/courses/store">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Tên Video</label>
+                            <input type="text" name="name" class="form-control" placeholder="Nhập tên video" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Mô Tả</label>
+                            <textarea name="description" class="form-control" rows="3" placeholder="Nhập mô tả" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="videoID" class="form-label">Video ID</label>
+                            <input type="text" name="videoID" class="form-control" placeholder="Nhập Video ID" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-dark">Thêm Video</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="description" class="form-label">mô tả</label>
-            <input type="text" name="description" class="form-control" >
-        </div>
-        <div class="mb-3">
-            <label for="videoID" class="form-label">videoid</label>
-            <input type="text" name="videoID" class="form-control" >
-        </div>
-        <button type="submit" class="btn btn-primary">Thêm video</button>
-    </form>
+    </div>
 </div>
