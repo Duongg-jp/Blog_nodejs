@@ -35,6 +35,9 @@ app.engine(
         getProp: function (obj, prop) {
           return obj ? obj[prop] : '';
         },
+        json: function (obj) {
+          return JSON.stringify(obj, null, 2); // In đối tượng dưới dạng JSON
+        },
       },
     }),
   );

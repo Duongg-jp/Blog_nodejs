@@ -1,12 +1,22 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const slug = require('mongoose-slug-generator');
 
-const Course = new Schema({
-  name: {type: String, default: 'khóa học'},
-  image: {type: String, default: 'https://www.vietcap.com.vn/api/cms-api/uploads/froala/images/tien-re-la-gi.jpg'},
-  description: {type: String, default: 'khóa học kiếm tiền'},
-  created_at: {type: Date, default:Date.now()},
-  updated_at: {type: Date, default:Date.now()},
-});
 
-module.exports = mongoose.model('Course', Course);
+mongoose.plugin(slug);
+
+const CourseSchema = new Schema(
+  {
+    name: { type: String },
+    image: { type: String },
+    videoID:{type: String,},
+    description: { type: String },
+    slug: { type: String, slug: 'name' }
+  },
+  {
+    timestamps: true,
+  }
+);
+
+// Tạo model từ schema
+module.exports = mongoose.model("Course", CourseSchema);

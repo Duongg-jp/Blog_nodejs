@@ -15,7 +15,13 @@
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen
       ></iframe>
-      <h4>{{getProp course "description"}}</h4>
+      <h4>{{getProp course "videoID"}}</h4>
+      
+      <p>Course Object: <pre>{{json course}}</pre></p>
+      <p>Course Name: {{getProp course "name"}}</p>
+      <p>Course videoID: {{getProp course "videoID"}}</p>
+      <p>Course description: {{getProp course "description"}}</p>
+
     </div>
   </div>
 </div>
