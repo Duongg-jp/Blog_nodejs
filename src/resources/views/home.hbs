@@ -1,26 +1,31 @@
 <div class="container mt-4">
   <div class="row">
     {{#each courses}}
-      <div class="col-sm-6 col-lg-4 mb-4">
+      <div class="col-sm-6 col-lg-3 mb-4">
         <div class="card h-100 shadow-sm">
-          <a href="/courses/{{this.slug}}" class="text-decoration-none">
-            <img
-              src="{{getProp this 'image'}}"
-              class="card-img-top rounded-top"
-              alt="{{getProp this 'name'}}"
-            />
-          </a>
+          <!-- Thumbnail hình ảnh khóa học -->
+          <div class="thumbnail"> 
+            <a href="/courses/{{this.slug}}" class="text-decoration-none">
+              <img
+                src="{{getProp this 'image'}}" 
+                srcset="{{getProp this 'image'}} 1x, {{getProp this 'image_high'}} 2x"
+                class="card-img-top rounded-top"
+                alt="{{getProp this 'name'}}"
+                style="image-resolution: 600dpi;"
+              />
+              <!-- Thời lượng khóa học hiển thị trên ảnh -->
+              <div class="duration">{{getProp this 'duration'}}</div>
+            </a>
+          </div>
+
+
           <div class="card-body d-flex flex-column">
             <!-- Tiêu đề khóa học -->
             <a href="/courses/{{this.slug}}" class="text-decoration-none">
-              <h5 class="card-title text-dark">{{getProp this "name"}}</h5>
+              <h5 class="card-title text-dark title">{{getProp this "name"}}</h5>
             </a>
             <!-- Mô tả khóa học -->
-            <p class="card-text text-muted">{{getProp this "description"}}</p>
-            <!-- Nút hành động -->
-            <div class="mt-auto">
-              <a href="#" class="btn btn-primary w-100">mimi</a>
-            </div>
+            <p class="card-text text-muted description">{{getProp this "description"}}</p>
           </div>
         </div>
       </div>

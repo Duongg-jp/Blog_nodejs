@@ -2,6 +2,7 @@
   "name": "blog_nodejs",
   "version": "1.0.0",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "beautiful": "lint-staged",
     "watch": "node-sass --watch src/resources/scss --output src/public/css",
@@ -30,6 +31,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^8.5.4",
     "mongoose-slug-generator": "^1.0.4",
+    "node-fetch": "^3.3.2",
     "node-sass": "^9.0.0"
   },
   "lint-staged": {
