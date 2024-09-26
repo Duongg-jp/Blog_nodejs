@@ -1,0 +1,88 @@
+<div class="mt-4">
+  <h2>khóa học của tôi</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tên khóa học</th>
+        <th scope="col">Thời gian tạo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each courses}}
+        <tr>
+          <th scope="row">{{@index}}</th>
+          <td>{{getProp this "name"}}</td>
+          <td>{{getProp this "createAt"}}</td>
+          <td>
+            <a href="/courses/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+            <a
+              href=""
+              class="btn btn-link"
+              data-bs-toggle="modal"
+              data-bs-target="#delete-courses"
+              data-id="{{this._id}}"
+            >Xóa</a> <!-- Nút kích hoạt modal để xóa khóa học -->
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+{{!-- Modal xác nhận xóa khóa học --}}
+
+<div
+  class="modal fade"
+  id="delete-courses"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        Bạn sẽ xóa nội dung này, chắc chắn chứ?
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >Hủy</button> <!-- Nút hủy, đóng modal -->
+        <button
+          type="button"
+          class="btn btn-danger"
+          id="btn-delete-courses"
+        >Xóa</button> <!-- Nút xóa, thực hiện hành động xóa khóa học -->
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Biểu mẫu xóa khóa học --}} 
+<form name="delete-form-courses" method="post"></form> <!-- Form dùng để gửi yêu cầu xóa khóa học bằng phương thức DELETE -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(e) { 
+    var coursesID; // Biến để lưu trữ ID của khóa học cần xóa
+    var deleteForm = document.forms['delete-form-courses']; // Truy cập biểu mẫu để sau này thực hiện gửi yêu cầu xóa khóa học
+    const btnDeleteCourses = document.getElementById("btn-delete-courses"); // Lấy nút "Xóa" trong modal
+
+    // Lắng nghe sự kiện khi modal được hiển thị
+    $('#delete-courses').on('show.bs.modal', function(e) { 
+      var button = $(e.relatedTarget); // Lấy nút kích hoạt modal
+      coursesID = button.data('id'); // Lấy ID của khóa học từ thuộc tính `data-id`
+    });
+
+    // Khi nhấn nút "Xóa" trong modal
+    btnDeleteCourses.onclick = function() {
+      deleteForm.action = '/courses/' + coursesID + '?_method=DELETE'; // Cập nhật hành động của form, thêm đường dẫn xóa khóa học
+      deleteForm.submit(); // Gửi form để thực hiện xóa khóa học
+    };
+  });
+</script>

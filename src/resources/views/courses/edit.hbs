@@ -3,24 +3,25 @@
         <div class="col-lg-6 col-md-8">
             <div class="card shadow-sm">
                 <div class="card-header bg-dark text-white text-center">
-                    <h4>Thêm Video</h4>
+                    <h4>Sửa Khóa học</h4>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="/courses/store">
+                    <form method="post" action="/courses/{{course._id}}?_method=PUT">
                         <div class="mb-3">
                             <label for="name" class="form-label">Tên Video</label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Nhập tên video" required>
+                            <input value="{{course.name}}" type="text" name="name" id="name" class="form-control" placeholder="Nhập tên video" required>
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Mô Tả</label>
-                            <textarea name="description" id="description" class="form-control" rows="3" placeholder="Nhập mô tả" required></textarea>
+                            <!-- Sửa cách lấy giá trị cho textarea -->
+                            <textarea name="description" id="description" class="form-control" rows="3" placeholder="Nhập mô tả" required>{{course.description}}</textarea>
                         </div>
                         <div class="mb-3">
                             <label for="videoID" class="form-label">Video ID</label>
-                            <input type="text" name="videoID" id="videoID" class="form-control" placeholder="Nhập Video ID" required>
+                            <input value="{{course.videoID}}" type="text" name="videoID" id="videoID" class="form-control" placeholder="Nhập Video ID" required>
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-dark">Thêm Video</button>
+                            <button type="submit" class="btn btn-dark">Lưu</button>
                         </div>
                     </form>
                 </div>

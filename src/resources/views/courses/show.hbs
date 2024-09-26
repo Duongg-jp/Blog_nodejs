@@ -1,27 +1,35 @@
 <div class="mt-4">
-  <div class="row">
-    <div class="col-lg-3">
-      <button>Hoc ngay</button>
-    </div>
-    <div class="col-lg-9">
-      <h2>{{getProp course "name"}}</h2>
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/{{getProp course 'videoID'}}"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
-      <h4>{{getProp course "videoID"}}</h4>
-      
-      <p>Course Object: <pre>{{json course}}</pre></p>
-      <p>Course Name: {{getProp course "name"}}</p>
-      <p>Course videoID: {{getProp course "videoID"}}</p>
-      <p>Course description: {{getProp course "description"}}</p>
+  <div class="row justify-content-center">
+    <!-- Cột chứa thông tin về khóa học và video, căn giữa và giảm chiều rộng -->
+    <div class="col-md-10 col-lg-12">
+      <div class="card shadow-sm mx-auto">
+        <div class="card-body">
+          <!-- Tiêu đề khóa học -->
+          <h2 class="card-title mb-3 text-center">{{getProp course "name"}}</h2>
+          
+          <!-- Video YouTube -->
+          <div class="ratio ratio-16x9 mb-4">
+            <iframe
+              src="https://www.youtube.com/embed/{{getProp course 'videoID'}}"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              class="rounded"
+            ></iframe>
+          </div>
 
+          <!-- Thông tin chi tiết khóa học -->
+          <h4 class="card-subtitle mb-3 text-muted text-center">Video ID: {{getProp course "videoID"}}</h4>
+          <p class="text-center"><strong>Mô tả khóa học:</strong> {{getProp course "description"}}</p>
+
+          <!-- Hiển thị dưới dạng JSON (chỉ dùng để debug) -->
+          {{!-- <div class="mt-4">
+            <h5>Course Object:</h5>
+            <pre class="bg-light p-3 rounded">{{json course}}</pre>
+          </div> --}}
+        </div>
+      </div>
     </div>
   </div>
 </div>

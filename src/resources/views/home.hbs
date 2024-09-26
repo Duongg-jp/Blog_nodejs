@@ -1,23 +1,29 @@
-<div class="mt-">
-    <div class="row">
-
-        {{#each courses}}
-        <div class="col-sm-6 col-lg-4">
-            <div class="card">
-                <a href="/courses/{{this.slug}}">
-                    <img src="{{getProp this 'image'}}" class="card-img-top" alt="...">
-                </a>
-                <div class="card-body">
-                <a href="/courses/{{this.slug}}">
-                    <h5 class="card-title">{{getProp this 'name'}}</h5>
-                </a>
-                    <p class="card-text">{{getProp this 'description'}}</p>
-                    <a href="#" class="btn btn-primary">54</a>
-                </div>
+<div class="container mt-4">
+  <div class="row">
+    {{#each courses}}
+      <div class="col-sm-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <a href="/courses/{{this.slug}}" class="text-decoration-none">
+            <img
+              src="{{getProp this 'image'}}"
+              class="card-img-top rounded-top"
+              alt="{{getProp this 'name'}}"
+            />
+          </a>
+          <div class="card-body d-flex flex-column">
+            <!-- Tiêu đề khóa học -->
+            <a href="/courses/{{this.slug}}" class="text-decoration-none">
+              <h5 class="card-title text-dark">{{getProp this "name"}}</h5>
+            </a>
+            <!-- Mô tả khóa học -->
+            <p class="card-text text-muted">{{getProp this "description"}}</p>
+            <!-- Nút hành động -->
+            <div class="mt-auto">
+              <a href="#" class="btn btn-primary w-100">mimi</a>
             </div>
+          </div>
         </div>
-
-        {{/each}}
-
-    </div>
+      </div>
+    {{/each}}
+  </div>
 </div>
