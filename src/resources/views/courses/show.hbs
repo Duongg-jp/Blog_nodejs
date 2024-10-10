@@ -1,14 +1,9 @@
-<div class="mt-4">
+<div class="container mt-4">
   <div class="row justify-content-center">
-    <!-- Cột chứa thông tin về khóa học và video, căn giữa và giảm chiều rộng -->
     <div class="col-md-10 col-lg-12">
-      <div class="card shadow-sm mx-auto">
+      <div class="card shadow-sm mx-auto" style="border: none;"> 
         <div class="card-body">
-          <!-- Tiêu đề khóa học -->
-          <h2 class="card-title mb-3 text-center">{{getProp course "name"}}</h2>
-          
-          <!-- Video YouTube -->
-          <div class="ratio ratio-16x9 mb-4">
+          <div class="ratio ratio-21x9 mb-4">
             <iframe
               src="https://www.youtube.com/embed/{{getProp course 'videoID'}}"
               title="YouTube video player"
@@ -19,9 +14,8 @@
             ></iframe>
           </div>
 
-          <!-- Thông tin chi tiết khóa học -->
-          <h4 class="card-subtitle mb-3 text-muted text-center">Video ID: {{getProp course "videoID"}}</h4>
-          <p class="text-center"><strong>Mô tả khóa học:</strong> {{getProp course "description"}}</p>
+          <h2 class="card-title mb-3 ">{{getProp course "name"}}</h2>
+          <p class=""><strong></strong> {{getProp course "description"}}</p>
 
         </div>
       </div>

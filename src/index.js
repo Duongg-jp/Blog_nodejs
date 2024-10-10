@@ -1,29 +1,31 @@
-import express from "express";
-import { engine } from "express-handlebars";
-import path from "path";
-import methodOverride from "method-override";
-import morgan from "morgan";
-import db from "./config/db/index.js"; // Thêm .js vào cuối
-import route from "./routes/index.js"; // Thêm .js vào cuối
-
+const { engine } = require("express-handlebars");
+const path = require("path");
+const express = require("express");
+const methodOverride = require("method-override");
+const morgan = require("morgan");
 const app = express();
 const port = 3000;
 
-// Kết nối đến DB
+const db = require("./config/db/index");
+
+// Connect to DB
 db.connect();
 
+const route = require("./routes");
+
 // Middleware
-app.use(express.static(path.join(process.cwd(), "public")));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan("combined"));
 
-// Thiết lập Handlebars với helpers
+// Handlebars setup with helpers
+// Đăng ký helper
 app.engine(
   "hbs",
   engine({
     extname: ".hbs",
-    layoutsDir: path.join(process.cwd(), "resources", "views", "layouts"),
+    layoutsDir: path.join(__dirname, "resources", "views", "layouts"),
     defaultLayout: "main",
     runtimeOptions: {
       allowProtoPropertiesByDefault: true,
@@ -40,12 +42,12 @@ app.engine(
   })
 );
 
-app.use(methodOverride('_method'));
+app.use(methodOverride('_method'))
 
 app.set("view engine", "hbs");
-app.set("views", path.join(process.cwd(), "resources", "views"));
+app.set("views", path.join(__dirname, "resources", "views"));
 
-// Khởi tạo route
+// Route initialization
 route(app);
 
 app.listen(port, () => {
